@@ -31,7 +31,7 @@ class CircularBoundaryConditionsTest {
     void getNeighbor() {
        Cell cellAt2 = generation.getCell(2);
         Cell cellAtIndex = generation.getCell(9);
-        Cell cellNegativeIndex = generation.getCell( - 2);
+        Cell cellNegativeIndex = generation.getCell(generation.size() - 2);
 
         assertEquals(cellAt2,boundaryConditions.getNeighbor(0, 2,generation)); // check if the cell at 2
         assertEquals(cellAtIndex, boundaryConditions.getNeighbor(0,generation.size() + 9,generation)); // check the cell at index
