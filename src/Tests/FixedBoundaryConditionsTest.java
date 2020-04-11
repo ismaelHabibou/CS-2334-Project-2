@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import projects.CellState;
 import projects.FixedBoundaryConditions;
 import projects.Generation;
+import projects.Cell;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -44,5 +45,13 @@ class FixedBoundaryConditionsTest {
 
     @Test
     void getNeighbor() {
+        Cell leftBoundary = new Cell(leftState);
+        Cell rightBoundary = new Cell(rightState);
+        int index = 5;
+        Cell inBetween = new Cell(generation.getCell(index).getState());
+
+        assertSame(leftBoundary.getState(),boundaryConditions.getNeighbor(0,-2,generation).getState());
+        assertSame(rightBoundary.getState(), boundaryConditions.getNeighbor(0,generation.size(),generation).getState());
+        assertSame(inBetween.getState(),boundaryConditions.getNeighbor(0,index,generation).getState());
     }
 }
