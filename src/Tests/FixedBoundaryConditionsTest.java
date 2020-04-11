@@ -31,6 +31,10 @@ class FixedBoundaryConditionsTest {
 
     @AfterEach
     void tearDown() {
+        leftState = null;
+        rightState = null;
+        generation = null;
+        boundaryConditions = null;
     }
 
     @Test
