@@ -30,6 +30,7 @@ class FixedBoundaryConditionsTest {
 
     @Test
     void getLeftState() {
+        assertEquals(leftState.toString(),boundaryConditions.getLeftState().toString());
     }
 
     @Test
