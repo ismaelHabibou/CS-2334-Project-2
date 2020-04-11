@@ -2,9 +2,8 @@
 >This project is an extension of the first project we did in CS2334. For more informations you can check the repostory of the first project. With that being said let's dive into coding, shall we? 
   
 ## Classes 
-  
+---  
 ### **CellState**
----
 This class represents the state of a cell in the automaton. It is an enum class that has two states **ON** and **OFF**, has private constructor (by default the constructor of an enum class is private), it has a static field called **SYMBOL_TO_STATE** which map  symbols to states. The enum class has the following method:
 
 #### +GetState(Symbol : char) : CellSatte
@@ -20,8 +19,8 @@ This method returns the character (**symbol**) that represents the cellSatte
 -  after test: returns the character that represents the cellState.
 - [x] is implemented?
 
-### **Cell**
 ---
+### **Cell**
 This class represents an individual cell in the generation of an automaton. It has only one data field which is the state of the cell. It has the following methods:
 
 #### +Cell()
@@ -39,8 +38,8 @@ This method should return the symbol that represents the state of the cell.
 -  after test: returns the string representation of the state of the cell.
 - [x] is implemented?
 
-### EvolvedCell
 ---
+### EvolvedCell
 This class extends Cell. It has only one data field which is the sub rule number. It has the following methods:
 #### +EvolveCell(state: CellSatte, subruleNum: int): int
 Constructor used to construct an instance of the EvolvedCell class.
@@ -48,8 +47,8 @@ Constructor used to construct an instance of the EvolvedCell class.
 This method returns the sub rule number of the cell.
 - [x] is implemented?
 
-### Generation 
 ---
+### Generation 
 This class represents a generation in an automaton. An array of cells is the only data field in this class. It has the following methods:
 #### +Generation(states: CellState[])
 Constructor that is used to construct a generation from an array of CellState.
@@ -68,8 +67,8 @@ Returns the cell at the position idx in the generation.
 Get the string representation of the generation.
 - [x] is implemented?
 
-### Automaton
 ---
+### Automaton
 This class has the following data fields:
 - rule: Rule (This is the rule that governs the evolution of the automaton)
 - generations: List< Generations > (This represents a container for the generations of the automaton)
