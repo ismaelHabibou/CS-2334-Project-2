@@ -127,6 +127,6 @@ This is yet another concrete class which implements the **BoundaryConditions** i
 This constructor is used to create an instance of this class.
 #### +getNeighbor(cellIdx: int, offset: int, Generation gen): Cell  
 In this method, the generation is treated as a circle and using modulus, we are going to get the state of the neighbor cell.
-- [ ] is implemented?
+- [x] is implemented?
 
 
