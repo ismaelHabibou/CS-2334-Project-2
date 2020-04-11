@@ -19,7 +19,7 @@ class CircularBoundaryConditionsTest {
     @BeforeEach
     void setUp() {
        String state = "O O O O O O O O O O O O O O O O O ";
-
+       generation = new Generation(state);
        boundaryConditions = new CircularBoundaryConditions();
     }
 
@@ -29,13 +29,12 @@ class CircularBoundaryConditionsTest {
 
     @Test
     void getNeighbor() {
-int index = generation.size() / 2;
-        Cell cellAt2 = generation.getCell(2);
-        Cell cellAtIndex = generation.getCell(index);
-        Cell cellNegativeIndex = generation.getCell(3);
+       Cell cellAt2 = generation.getCell(2);
+        Cell cellAtIndex = generation.getCell(9);
+        Cell cellNegativeIndex = generation.getCell( - 2);
 
-        assertEquals(cellAt2,boundaryConditions.getNeighbor(index, (index + 2),generation)); // check if the cell at 2
-        assertEquals(cellAtIndex, boundaryConditions.getNeighbor(index,index,generation)); // check the cell at index
-        assertEquals(cellNegativeIndex, boundaryConditions.getNeighbor(index, (-index - 3),generation)); // check a negative cell
+        assertEquals(cellAt2,boundaryConditions.getNeighbor(0, 2,generation)); // check if the cell at 2
+        assertEquals(cellAtIndex, boundaryConditions.getNeighbor(0,generation.size() + 9,generation)); // check the cell at index
+        assertEquals(cellNegativeIndex, boundaryConditions.getNeighbor(0, (-2),generation)); // check a negative cell
     }
 }
