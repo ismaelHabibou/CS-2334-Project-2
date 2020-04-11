@@ -17,8 +17,8 @@ public class CircularBoundaryConditions implements BoundaryConditions {
     @Override
     public Cell getNeighbor(int cellIdx, int offset, Generation gen) {
           int indexOfNeighbor = (cellIdx + offset);
-         indexOfNeighbor = (indexOfNeighbor) > 0? indexOfNeighbor % gen.size() : (indexOfNeighbor + gen.size()) % gen.size();
+         indexOfNeighbor = (indexOfNeighbor) > 0? indexOfNeighbor % gen.size() : indexOfNeighbor % gen.size() + gen.size();
 
-        return new Cell(gen.getCell(indexOfNeighbor).getState());
+         return gen.getCell(indexOfNeighbor);
     }
 }
