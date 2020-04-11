@@ -112,13 +112,13 @@ This a concrete class tha implements the **BoundaryConditions**  interface. It h
 Constructor for creating an instance of the class.
 #### +getLeftState(): CellState
 Returns the **leftState** used to construct  an instance of this class.
-- [ ] is implemented?
+- [x] is implemented?
 #### +getRightState(): CellState
 Returns the **rightState** used to construct an instance of this class.
-- [ ] is implemented?
+- [x] is implemented?
 #### +getNeighbor(cellIdx: int, offset: int, Generation gen): Cell  
 This method is used to return the neighbor of the cell at index **cellIdx** in the generation. Because of fixed boundary conditons, a generation is treated as array with infinite number of entries so for example if the neighbor is at the left of cell at **cellIdx** in the generation, a cell with **leftState is returned** else a cell with **rightState is returned**.
-- [ ] is implemented?
+- [x] is implemented?
 
 ---
 ### CircularBoundaryConditions
