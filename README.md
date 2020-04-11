@@ -2,7 +2,7 @@
 >This project is an extension of the first project we did in CS2334. For more informations you can check the repostory of the first project. With that being said let's dive into coding, shall we? 
   
 ## Classes 
----  
+
 ### **CellState**
 This class represents the state of a cell in the automaton. It is an enum class that has two states **ON** and **OFF**, has private constructor (by default the constructor of an enum class is private), it has a static field called **SYMBOL_TO_STATE** which map  symbols to states. The enum class has the following method:
 
@@ -96,3 +96,37 @@ This method returns the string representation of the generation at the top.
 #### +getHistory(): String
 Get the string representation all the generations of the automaton.
 - [x] is implemented?
+
+---
+### BoundaryConditions (Interface)
+This interface has a single abstract method. 
+#### +getNeighbor(cellIdx: int, offset: int, Generation gen): Cell  
+This method returns the neighbor at index **cellIdx + offset** of a cell at index **cellIIdx**.
+
+---
+### FixedBoundaryConditions 
+This a concrete class tha implements the **BoundaryConditions**  interface. It has the following data fields:
+- LeftState: CellState;
+- rightState: CellState;
+#### +FixedBoundaryConditions(left: CellState, right: CellState)
+Constructor for creating an instance of the class.
+#### +getLeftState(): CellState
+Returns the **leftState** used to construct  an instance of this class.
+- [ ] is implemented?
+#### +getRightState(): CellState
+Returns the **rightState** used to construct an instance of this class.
+- [ ] is implemented?
+#### +getNeighbor(cellIdx: int, offset: int, Generation gen): Cell  
+This method is used to return the neighbor of the cell at index **cellIdx** in the generation. Because of fixed boundary conditons, a generation is treated as array with infinite number of entries so for example if the neighbor is at the left of cell at **cellIdx** in the generation, a cell with **leftState is returned** else a cell with **rightState is returned**.
+- [ ] is implemented?
+
+---
+### CircularBoundaryConditions
+This is yet another concrete class which implements the **BoundaryConditions** interface. This class does not have any data fields but it has some methods:
+#### +CircularBoundaryContions()
+This constructor is used to create an instance of this class.
+#### +getNeighbor(cellIdx: int, offset: int, Generation gen): Cell  
+In this method, the generation is treated as a circle and using modulus, we are going to get the state of the neighbor cell.
+- [ ] is implemented?
+
+
