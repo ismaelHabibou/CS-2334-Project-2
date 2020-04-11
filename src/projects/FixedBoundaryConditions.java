@@ -31,14 +31,24 @@ public class FixedBoundaryConditions implements BoundaryConditions {
         return right;
     }
 
-    /** Get neighbor
-     * @param cellIdx
-     * @param offset
-     * @param gen
+     /** Get the neighbor
+     * @param cellIdx index of the cell
+     * @param offset distance from cell at index CellIdx to the neighbor
+     * @param gen the generation
+     * @return cell
      * */
-
     @Override
     public Cell getNeighbor(int cellIdx, int offset, Generation gen) {
-        return null; // return any value
+        int indexOfNeighborCell = cellIdx + offset;
+        Cell neighborCell; // reference of the neighbor cell
+
+        if (indexOfNeighborCell < 0)
+            neighborCell = new Cell(left);
+        else if (indexOfNeighborCell >= gen.size())
+            neighborCell = new Cell(right);
+        else
+            neighborCell = new Cell(gen.getCell(indexOfNeighborCell).getState());
+
+        return neighborCell; // return the reference of neighbor cell
     }
 }
