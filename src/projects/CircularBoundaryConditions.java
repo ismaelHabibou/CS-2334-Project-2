@@ -8,11 +8,17 @@ public class CircularBoundaryConditions implements BoundaryConditions {
 
     }
 
-    /** Implement the abstract method from the interface
+  /** Get the neighbor
+     * @param cellIdx index of the cell
+     * @param offset distance from cell at index CellIdx to the neighbor
+     * @param gen the generation
+     * @return cell
      * */
-    // TODO implement the method
     @Override
     public Cell getNeighbor(int cellIdx, int offset, Generation gen) {
-        return null; // Return any value;
+          int indexOfNeighbor = (cellIdx + offset);
+         indexOfNeighbor = (indexOfNeighbor) > 0? indexOfNeighbor % gen.size() : indexOfNeighbor % gen.size() + gen.size();
+
+         return gen.getCell(indexOfNeighbor);
     }
 }
