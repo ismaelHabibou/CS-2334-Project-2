@@ -1,40 +1,97 @@
 package projects;
 
 public class TotalisticRule extends Rule{
-    // TODO declare data fields
+     /** Data field: cell state for the rule*/
+    CellState[] states;
 
-    /** Create a totalistic rule*
+    /**
+     * Data field: maximum number of rules for an automaton
      */
-    //TODO Implement
-    public TotalisticRule(int ruleNum){
-        super(ruleNum);
+    private final static int MAXIMUM_NUMBER_OF_RULES = 64;
+
+    /** Create a totalistic rule
+     * @param ruleNum The rule number of the totalistic rule
+     * @throws InvalidRuleNumException Invalid rule number passed.
+     */
+    public TotalisticRule(int ruleNum) throws InvalidRuleNumException {
+        super((ruleNum < 0 || ruleNum > MAXIMUM_NUMBER_OF_RULES)? -1 : ruleNum);
+
+        String binaryRuleNum =  addLeadingZeros(Integer.toBinaryString(ruleNum));
+        states = new CellState[binaryRuleNum.length()];
+
+        for (int i = 0; i < binaryRuleNum.length(); i++)
+            states[i] = (binaryRuleNum.charAt(i) == '1')? CellState.ON : CellState.OFF;
     }
 
-    /** Get the number of sub rules*/
-    //TODO implement
+     /** Add leading zeros
+     * @param binaryRuleNum The binary representation of the rule number.
+     * @return binary rule number with 6 bits
+     * */
+    private String  addLeadingZeros(String binaryRuleNum){
+         final int MAX = 6;
+         StringBuilder buffer = new StringBuilder();
+
+         for (int i = 0; i < MAX - binaryRuleNum.length(); i++)
+             buffer.append('0');
+
+         buffer.append(binaryRuleNum);
+
+         return buffer.toString();
+    }
+
+    /** Get the number of sub rules
+     * @return the total number of subrules*/
     @Override
     public int getNumSubrules() {
-        return 0;
+        return states.length;
     }
 
-     /** Get neighborhood*/
-     //TODO implement
+     /** Get the neighborhood of the cell at index cellIdx within a radius of 2.
+     * @param cellIdx The index of the cell
+     * @param gen Generation to be evolved
+     * @param bc Boundary conditions that governs the evolution of the generation
+     * @return the neighborhood of the cell at cellIdx
+     * */
     @Override
     public Cell[] getNeighborhood(int cellIdx, Generation gen, BoundaryConditions bc) {
-        return new Cell[0]; // return value
+        Cell[] neighborhood = new Cell[5];
+        
+        neighborhood[2] = bc.getNeighbor(cellIdx,0,gen);
+        neighborhood[1] = bc.getNeighbor(cellIdx,-1,gen);
+        neighborhood[0] = bc.getNeighbor(cellIdx,-2,gen);
+        neighborhood[3] = bc.getNeighbor(cellIdx,1,gen);
+        neighborhood[4] = bc.getNeighbor(cellIdx,2,gen);
+        
+        return neighborhood;
     }
 
-    /** Evolve cell*/
-    //TODO implement
+    /** Evolve cell with the following neighborhood
+     * @param neighborhood neighborhood of the cell at index 2 in the array.
+     * @return evolved cell
+     * */
     @Override
     public EvolvedCell evolve(Cell[] neighborhood) {
-        return null; // value
+        int numberOfOn = 0;
+        
+        for (int i = 0; i < neighborhood.length; i++)
+            if (neighborhood[i].getState() == CellState.ON)
+                numberOfOn++;
+            
+        return new EvolvedCell(states[(getNumSubrules() - 1 - numberOfOn)],numberOfOn);
     }
 
-    /** Get the string representation*/
+    /** Get the string representation of the rule
+     * @return a table for the rule.
+     * */
     @Override
-    //TODO implement
     public String toString() {
-        return null; // return any value
+        StringBuilder buffer = new StringBuilder();
+        
+        for (int i = 0; i < states.length; i++)
+            buffer.append((states[i] == CellState.ON)? CellState.ON.toString() : CellState.OFF.toString()).append(" ");
+        
+        buffer.deleteCharAt(buffer.length() - 1);
+        
+        return "5 4 3 2 1 0\n" + buffer.toString();
     }
 }
