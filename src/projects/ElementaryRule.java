@@ -16,8 +16,9 @@ public class ElementaryRule extends Rule{
  
     /** Create an elementary rule
      * @param ruleNum This is the rule number use to construct an elementary rule object.
+     * @throws InvalidRuleNumException invalid rule number.   
      * */
-    public ElementaryRule(int ruleNum){
+    public ElementaryRule(int ruleNum)throws InvalidRuleNumException{
         super(ruleNum);
 
         // Binary representation of the rule number
