@@ -40,6 +40,7 @@ class AutomatonTest {
 
     @Test
     void getBc() {
+      assertEquals(conditions,automaton.getBc());
     }
 
     @Test
