@@ -31,6 +31,7 @@ class AutomatonTest {
 
     @Test
     void getRule() {
+       assertEquals(rule1,automaton.getRule());
     }
 
     @Test
