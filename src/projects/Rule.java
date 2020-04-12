@@ -60,4 +60,18 @@ public abstract class Rule {
      * */
     @Override
     public abstract String toString();
+
+    /** Add leading zero to the binary representation of the rule number
+     * @return a binary rule number with numSubrules bits.
+     * */
+    protected static String addLeadingZero(String binaryRule, int numSubrules){
+        StringBuilder buffer = new StringBuilder();
+
+        for (int i = 0; i < numSubrules - binaryRule.length(); i++)
+            buffer.append('0');
+
+        buffer.append(binaryRule);
+        buffer.trimToSize();
+        return buffer.toString();
+    }
 }
