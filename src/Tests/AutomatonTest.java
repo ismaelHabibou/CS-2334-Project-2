@@ -21,6 +21,9 @@ class AutomatonTest {
     /** Automatons*/
     Automaton automaton = new Automaton(rule1,gen2,conditions);
 
+    AutomatonTest() throws InvalidRuleNumException {
+    }
+
     @BeforeEach
     void setUp() {
     }
@@ -35,7 +38,7 @@ class AutomatonTest {
     }
 
     @Test
-    void geGeneration() {
+    void geGeneration() throws InvalidStepNumExceptio {
         Generation evolvedGeneration = new Generation(" OO O O OO ");
 
         assertEquals(evolvedGeneration.toString(),automaton.geGeneration(1).toString());
@@ -47,7 +50,7 @@ class AutomatonTest {
     }
 
     @Test
-    void evolve() {
+    void evolve()throws InvalidStepNumException {
         Generation evolvedGeneration = new Generation(" OO O O OO ");
         automaton.evolve(1);
 
@@ -61,7 +64,7 @@ class AutomatonTest {
     }
 
     @Test
-    void getTotalSteps() {
+    void getTotalSteps()throws InvalidStepNumException{
         int totalSteps = 10;
         automaton.evolve(totalSteps);
 
@@ -76,7 +79,7 @@ class AutomatonTest {
     }
 
     @Test
-    void getHistory() {
+    void getHistory() throws InvalidStepNumException{
         Generation evolvedGeneration = new Generation(" OO O O OO ");
         String history = evolvedGeneration.toString() + "\n" + gen2.toString();
         
