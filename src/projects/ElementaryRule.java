@@ -3,6 +3,16 @@ package projects;
 public class ElementaryRule extends Rule{
     /** Data field: different states of cells*/
     private CellState[] states;
+
+   /** Data field: rule table*/
+    private static String RULE_TABLE;
+
+    static {
+        String on = CellState.ON.toString();
+        String off = CellState.OFF.toString();
+        RULE_TABLE = on + on + on + " " + on + on + off + " " + on + off + on + " " + on + off + off + " " +
+                off + on + on + " " + off + on + off + " " + off + off + on + " " + off + off + off;
+    }
  
     /** Create an elementary rule
      * @param ruleNum This is the rule number use to construct an elementary rule object.
@@ -66,11 +76,18 @@ public class ElementaryRule extends Rule{
         return neighbors; // return the reference of neighbors.
     }
 
-    /** Get the string representation of the rule*/
-    //TODO implement
+    /** Get the string representation of the rule
+     * @return  the rule as a table.
+     * */
     @Override
     public String toString() {
-        return null;// return value
+        String binaryRuleNum = Integer.toBinaryString(getRuleNum());
+        StringBuilder buffer = new StringBuilder();
+
+        for (int i = 0; i < binaryRuleNum.length(); i++)
+            buffer.append(" ").append(binaryRuleNum.charAt(i)== '1'? CellState.ON.toString(): CellState.OFF.toString()).append(" ");
+        
+        return RULE_TABLE + "\n" + buffer.toString();
     }
 
    /** Evolve
