@@ -34,6 +34,8 @@ class TotalisticRuleTest {
 
     @Test
     void getNumSubrules() {
+        final int MAXIMUM_SUBRULES = 6;
+        assertEquals(MAXIMUM_SUBRULES,rule.getNumSubrules());
     }
 
     @Test
