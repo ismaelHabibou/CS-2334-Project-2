@@ -3,10 +3,14 @@ package projects;
 public class ElementaryRule extends Rule{
     /** Data field: different states of cells*/
     private CellState[] states;
+    
+    /** Data field: number of subrules*/
+    private static int NUMBER_OF_SUBRULES = 8;
 
    /** Data field: rule table*/
     private static String RULE_TABLE;
- /**
+
+   /**
      * Data field: maximum number of rules for an automaton
      */
     private final static int MAXIMUM_NUMBER_OF_RULES = 256;
@@ -26,7 +30,7 @@ public class ElementaryRule extends Rule{
         super((ruleNum > MAXIMUM_NUMBER_OF_RULES || ruleNum < 0)? -1: ruleNum);
 
         // Binary representation of the rule number
-        String binaryRuleNum = addLeadingZero(Integer.toBinaryString(ruleNum));
+        String binaryRuleNum = addLeadingZero(Integer.toBinaryString(ruleNum),NUMBER_OF_SUBRULES);
         states = new CellState[binaryRuleNum.length()];
         
         // Fill array with cell state
@@ -42,27 +46,13 @@ public class ElementaryRule extends Rule{
             states[i] = binaryRuleNum.charAt(i) == '1'? CellState.ON : CellState.OFF;
     }
 
-    /** Add leading zero to the binary representation of the rule number
-     * @return a rule with 8 bits.
-     * */
-    public static String addLeadingZero(String binaryRule){
-        final int MAX_LENGTH = 8;
-        StringBuilder buffer = new StringBuilder();
-
-        for (int i = 0; i < MAX_LENGTH - binaryRule.length(); i++)
-            buffer.append('0');
-
-        buffer.append(binaryRule);
-        buffer.trimToSize();
-        return buffer.toString();
-    }
 
     /** Get the number of sub rules
      * @return Number of the sub rules
      * */
     @Override
     public int getNumSubrules() {
-        return states.length;
+          return NUMBER_OF_SUBRULES;
     }
 
     /** Get the neighborhood of the cell at index cellIdx
