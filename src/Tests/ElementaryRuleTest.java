@@ -26,6 +26,9 @@ class ElementaryRuleTest {
     /** Create a fixed boundary conditions*/
     static BoundaryConditions fixed = new FixedBoundaryConditions(CellState.OFF,CellState.ON);
 
+    ElementaryRuleTest() throws InvalidRuleNumException {
+    }
+
     @BeforeEach
     void setUp() {
          String states = "       O       ";
