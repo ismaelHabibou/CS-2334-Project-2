@@ -48,6 +48,16 @@ class AutomatonTest {
 
     @Test
     void evolve() {
+        Generation evolvedGeneration = new Generation(" OO O O OO ");
+        automaton.evolve(1);
+
+        boolean correct = true;
+        if (!evolvedGeneration.toString().equals(automaton.geGeneration(1).toString()))
+            correct = false;
+        if (!gen2.toString().equals(automaton.geGeneration(0).toString()))
+            correct = false;
+
+        assertTrue(correct);
     }
 
     @Test
