@@ -53,5 +53,8 @@ class TotalisticRuleTest {
 
     @Test
     void testToString() {
+        String ruleString = "5 4 3 2 1 0\n  O   O O  ";
+        
+        assertEquals(ruleString,rule.toString());
     }
 }
