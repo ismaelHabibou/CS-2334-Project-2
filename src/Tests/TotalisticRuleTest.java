@@ -41,6 +41,11 @@ class TotalisticRuleTest {
     @Test
     void getNeighborhood() {
     }
+    
+     @Test
+    void getRuleNum() {
+        assertEquals(ruleNum,rule.getRuleNum());
+    }
 
     @Test
     void evolve() {
