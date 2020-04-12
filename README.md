@@ -87,7 +87,7 @@ Return the boundary conditions.
 - [x] is implemented?
 #### +evolve(numSteps: int): void
 Evolve the automaton by **numSteps**.
-- [ ] is implemented?
+- [x] is implemented?
 #### +getTotalSteps(): int
 Get the total number by which the automaton evolved.
 #### +toString(): String
