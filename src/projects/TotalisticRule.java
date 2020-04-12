@@ -64,10 +64,18 @@ public class TotalisticRule extends Rule{
         return new EvolvedCell(states[(getNumSubrules() - 1 - numberOfOn)],numberOfOn);
     }
 
-    /** Get the string representation*/
+    /** Get the string representation of the rule
+     * @return a table for the rule.
+     * */
     @Override
-    //TODO implement
     public String toString() {
-        return null; // return any value
+        StringBuilder buffer = new StringBuilder();
+        
+        for (int i = 0; i < states.length; i++)
+            buffer.append((states[i] == CellState.ON)? CellState.ON.toString() : CellState.OFF.toString()).append(" ");
+        
+        buffer.deleteCharAt(buffer.length() - 1);
+        
+        return "5 4 3 2 1 0\n" + buffer.toString();
     }
 }
