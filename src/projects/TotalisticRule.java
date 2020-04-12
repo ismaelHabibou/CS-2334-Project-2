@@ -30,11 +30,23 @@ public class TotalisticRule extends Rule{
         return states.length;
     }
 
-     /** Get neighborhood*/
-     //TODO implement
+     /** Get the neighborhood of the cell at index cellIdx within a radius of 2.
+     * @param cellIdx The index of the cell
+     * @param gen Generation to be evolved
+     * @param bc Boundary conditions that governs the evolution of the generation
+     * @return the neighborhood of the cell at cellIdx
+     * */
     @Override
     public Cell[] getNeighborhood(int cellIdx, Generation gen, BoundaryConditions bc) {
-        return new Cell[0]; // return value
+        Cell[] neighborhood = new Cell[5];
+        
+        neighborhood[2] = bc.getNeighbor(cellIdx,0,gen);
+        neighborhood[1] = bc.getNeighbor(cellIdx,-1,gen);
+        neighborhood[0] = bc.getNeighbor(cellIdx,-2,gen);
+        neighborhood[3] = bc.getNeighbor(cellIdx,1,gen);
+        neighborhood[4] = bc.getNeighbor(cellIdx,2,gen);
+        
+        return neighborhood;
     }
 
     /** Evolve cell*/
