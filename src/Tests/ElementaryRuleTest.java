@@ -42,6 +42,11 @@ class ElementaryRuleTest {
      int numberSubRules = 8;
      assertEquals(numberSubRules,rule.getNumSubrules());
     }
+   
+   @Test
+    void getRuleNumber(){
+        assertEquals(ruleNumber,rule.getRuleNum());
+    }
 
      @ParameterizedTest
     @MethodSource("arrayStream1")
