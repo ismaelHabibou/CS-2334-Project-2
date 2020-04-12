@@ -52,6 +52,10 @@ class AutomatonTest {
 
     @Test
     void getTotalSteps() {
+        int totalSteps = 10;
+        automaton.evolve(totalSteps);
+
+        assertEquals(totalSteps -1,automaton.getTotalSteps());
     }
 
     @Test
