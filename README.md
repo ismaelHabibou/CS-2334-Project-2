@@ -177,17 +177,17 @@ Constructor for creating an instance of totalistic rule.
 
 #### +getNumSubrules(): int 
 Return the length of the rule table.
-- [ ] is implemented?
+- [x] is implemented?
 
 #### +getNeighborhood(cellIIdx: int, gen: Generation, bc: BoundaryConditions) : Cell[]
 Return an array containing the cell at ** cellIdx ** and its adjacent neighbors.
-- [ ] is implemented?
+- [x] is implemented?
 
 #### +evolve(neighborhood: cell[]) : EvolvedCell[]
 Evolve the cell and its neighborhood cell.
-- [ ] is implemented?
+- [x] is implemented?
 
 #### +toString(): String
 Return the string representation of the rule.
-- [ ] is implemented?
+- [x] is implemented?
 
