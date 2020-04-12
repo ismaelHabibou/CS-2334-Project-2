@@ -3,10 +3,15 @@ package Tests;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import projects.ElementaryRule;
+import projects.Rule;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ElementaryRuleTest {
+    private int ruleNumber = 22;
+    /** Create an elementary rule object*/
+    Rule rule = new ElementaryRule(ruleNumber);
 
     @BeforeEach
     void setUp() {
