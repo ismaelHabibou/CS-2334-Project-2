@@ -180,7 +180,7 @@ Return the length of the rule table.
 - [x] is implemented?
 
 #### +getNeighborhood(cellIIdx: int, gen: Generation, bc: BoundaryConditions) : Cell[]
-Return an array containing the cell at ** cellIdx ** and its adjacent neighbors.
+Return an array containing the cell at **cellIdx**  and its adjacent neighbors.
 - [x] is implemented?
 
 #### +evolve(neighborhood: cell[]) : EvolvedCell[]
