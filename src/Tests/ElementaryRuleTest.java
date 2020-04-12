@@ -23,7 +23,7 @@ class ElementaryRuleTest {
 
     @BeforeEach
     void setUp() {
-        String states = "O O O O O O O O O O O O O O O O O ";
+         String states = "       O       ";
         generation = new Generation(states);
     }
 
@@ -64,7 +64,25 @@ class ElementaryRuleTest {
     void testToString() {
     }
 
-    @Test
-    void evolve() {
+    @ParameterizedTest
+    @MethodSource("arrayStream")
+    void testEvolve(Object myStates) {
+        Cell[][] states = (Cell[][]) myStates;
+
+        assertSame(states[0][0], rule.evolve(states[1]));
+
+    }
+
+
+    static Stream<Arguments> arrayStream(){
+        return Stream.of(Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.OFF, 7)}, {new Cell(CellState.ON), new Cell(CellState.ON), new Cell(CellState.ON)}}),
+                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.OFF, 6)}, {new Cell(CellState.ON), new Cell(CellState.ON), new Cell(CellState.OFF)}}),
+                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.OFF, 5)}, {new Cell(CellState.ON), new Cell(CellState.OFF), new Cell(CellState.ON)}}),
+                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.ON, 4)}, {new Cell(CellState.ON), new Cell(CellState.OFF), new Cell(CellState.OFF)}}),
+                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.OFF, 3)}, {new Cell(CellState.OFF), new Cell(CellState.ON), new Cell(CellState.ON)}}),
+                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.ON, 2)}, {new Cell(CellState.OFF), new Cell(CellState.ON), new Cell(CellState.OFF)}}),
+                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.ON, 1)}, {new Cell(CellState.OFF), new Cell(CellState.OFF), new Cell(CellState.ON)}}),
+                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.OFF, 0)}, {new Cell(CellState.OFF), new Cell(CellState.OFF), new Cell(CellState.OFF)}})
+        );
     }
 }
