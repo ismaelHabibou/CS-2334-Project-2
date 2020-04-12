@@ -6,6 +6,10 @@ public class ElementaryRule extends Rule{
 
    /** Data field: rule table*/
     private static String RULE_TABLE;
+ /**
+     * Data field: maximum number of rules for an automaton
+     */
+    private final static int MAXIMUM_NUMBER_OF_RULES = 256;
 
     static {
         String on = CellState.ON.toString();
@@ -19,7 +23,7 @@ public class ElementaryRule extends Rule{
      * @throws InvalidRuleNumException invalid rule number.   
      * */
     public ElementaryRule(int ruleNum)throws InvalidRuleNumException{
-        super(ruleNum);
+        super((ruleNum > MAXIMUM_NUMBER_OF_RULES || ruleNum < 0)? -1: ruleNum);
 
         // Binary representation of the rule number
         String binaryRuleNum = addLeadingZero(Integer.toBinaryString(ruleNum));
@@ -102,6 +106,6 @@ public class ElementaryRule extends Rule{
         for (int i = 0; i < neighborhood.length - 1; i++)
             subruleNumber = subruleNumber * 2 + (neighborhood[i + 1].getState() == CellState.ON? 1 : 0);
 
-        return new EvolvedCell(states[subruleNumber],subruleNumber);
+        return new EvolvedCell(states[getNumSubrules() - 1 - subruleNumber],subruleNumber);
     }
 }
