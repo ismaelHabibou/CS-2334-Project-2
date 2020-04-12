@@ -68,6 +68,15 @@ class ElementaryRuleTest {
 
     }
 
+   @Test
+    void evolve(){
+        Cell[] cells = new Cell[15];
+        for (int i = 0; i < cells.length; i++)
+            cells[i] = generation.getCell(i);
+
+        assertEquals(generation.toString(),rule.evolve(cells).toString());
+    }
+
     @Test
     void testToString() {
       String on = CellState.ON.toString();
