@@ -11,6 +11,7 @@ public class EvolvedCell extends Cell{
      * @param subruleNum The sub rule of the cell
      */
     public EvolvedCell(CellState state,int subruleNum){
+        super(state);
         this.subruleNum = subruleNum;
 
     }
