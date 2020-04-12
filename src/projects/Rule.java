@@ -3,11 +3,12 @@ package projects;
 /** This class represents the rule that governs the evolution of the automaton*/
 public abstract class Rule {
     /** Data field: rule number*/
-    private int ruleNum;
+     private int ruleNum;
 
-    /**Implement the constructor that will be used by subclasses*/
-    //TODO implement
+    /**Implement the constructor that will be used by subclasses
+     * @param ruleNum  The rule number.*/
     protected Rule(int ruleNum){
+       this.ruleNum = ruleNum;
     }
 
     /** Get the rule number
