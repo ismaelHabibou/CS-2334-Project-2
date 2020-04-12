@@ -42,11 +42,12 @@ public class ElementaryRule extends Rule{
         return buffer.toString();
     }
 
-    /** Get the number of sub rules*/
-    //TODO implement
+    /** Get the number of sub rules
+     * @return Number of the sub rules
+     * */
     @Override
     public int getNumSubrules() {
-        return 0;// return value
+        return states.length;
     }
 
     /** Get neighborhood */
