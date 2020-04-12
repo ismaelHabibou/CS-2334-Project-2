@@ -49,6 +49,9 @@ class TotalisticRuleTest {
 
     @Test
     void evolve() {
+        Generation evolvedGeneration = new Generation(" OO O O OO ");
+        
+        assertEquals(evolvedGeneration.toString(),rule.evolve(generation,circular).toString());
     }
 
     @Test
