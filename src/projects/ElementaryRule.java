@@ -90,7 +90,9 @@ public class ElementaryRule extends Rule{
         StringBuilder buffer = new StringBuilder();
 
         for (int i = 0; i < binaryRuleNum.length(); i++)
-            buffer.append(" ").append(binaryRuleNum.charAt(i)== '1'? CellState.ON.toString(): CellState.OFF.toString()).append(" ");
+            buffer.append(" ").append(binaryRuleNum.charAt(i)== '1'? CellState.ON.toString(): CellState.OFF.toString()).append("  ");
+
+            buffer.deleteCharAt(buffer.length() - 1);
         
         return RULE_TABLE + "\n" + buffer.toString();
     }
