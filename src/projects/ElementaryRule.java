@@ -86,11 +86,10 @@ public class ElementaryRule extends Rule{
      * */
     @Override
     public String toString() {
-        String binaryRuleNum = Integer.toBinaryString(getRuleNum());
-        StringBuilder buffer = new StringBuilder();
+       StringBuilder buffer = new StringBuilder();
 
-        for (int i = 0; i < binaryRuleNum.length(); i++)
-            buffer.append(" ").append(binaryRuleNum.charAt(i)== '1'? CellState.ON.toString(): CellState.OFF.toString()).append("  ");
+       for (int i = 0; i < states.length; i++)
+            buffer.append(" ").append(states[i] == CellState.ON? CellState.ON.toString(): CellState.OFF.toString()).append("  ");
 
             buffer.deleteCharAt(buffer.length() - 1);
         
