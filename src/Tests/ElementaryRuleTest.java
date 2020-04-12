@@ -23,6 +23,8 @@ class ElementaryRuleTest {
 
     @Test
     void getNumSubrules() {
+     int numberSubRules = 8;
+     assertEquals(numberSubRules,rule.getNumSubrules());
     }
 
     @Test
