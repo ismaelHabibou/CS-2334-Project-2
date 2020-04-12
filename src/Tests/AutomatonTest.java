@@ -77,5 +77,11 @@ class AutomatonTest {
 
     @Test
     void getHistory() {
+        Generation evolvedGeneration = new Generation(" OO O O OO ");
+        String history = evolvedGeneration.toString() + "\n" + gen2.toString();
+        
+        automaton.evolve(1);
+        
+        assertEquals(history,automaton.getHistory());   
     }
 }
