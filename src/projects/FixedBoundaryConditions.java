@@ -47,7 +47,7 @@ public class FixedBoundaryConditions implements BoundaryConditions {
         else if (indexOfNeighborCell >= gen.size())
             neighborCell = new Cell(right);
         else
-            neighborCell = new Cell(gen.getCell(indexOfNeighborCell).getState());
+            neighborCell = gen.getCell(indexOfNeighborCell);
 
         return neighborCell; // return the reference of neighbor cell
     }
