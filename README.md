@@ -129,4 +129,65 @@ This constructor is used to create an instance of this class.
 In this method, the generation is treated as a circle and using modulus, we are going to get the state of the neighbor cell.
 - [x] is implemented?
 
+---
+### _Rule_
+This is an abstract class that governs the evolution of the automaton. It has the following abstract method:
+#### +_getNumSubrules():_
+#### +_getNeighborhood(cellIdx: int, gen: Generation, bc: BoundaryConditions): Cell[]_
+#### +_evolve(neighborhood: Cell[]): EvolvedCell[]_
+#### +_toString(): String_
+The **Rule** has the following non abstract method:
+#### #Rule(ruleNum: int)
+Create a rule from a rule number.
+
+#### +getRuleNum(): int
+Return the rule number used to create the rule.
+
+#### +evolve(gen: Generation, bc: BoundaryConditions): Generations
+- [ ] is implemented?
+
+---
+### ElementaryRule
+This class represents  an elementary rule as depicted in Wolfram's book. This class has the following method:
+#### +ElementaryRule (ruleNum: int)
+Constructor for creating an elementary rule.
+
+#### +getNumSubrules(): int 
+Return the length of the rule table.
+- [ ] is implemented?
+
+#### +getNeighborhood(cellIIdx: int, gen: Generation, bc: BoundaryConditions) : Cell[]
+Return an array containing the cell at ** cellIdx ** and its adjacent neighbors.
+- [ ] is implemented?
+
+#### +evolve(neighborhood: cell[]) : EvolvedCell[]
+Evolve the cell and its neighborhood cell.
+- [ ] is implemented?
+
+#### +toString(): String
+Return the string representation of the rule.
+- [ ] is implemented?
+
+---
+### TotalisticRule
+This class represents the rule that governs the evolution of a totalistic cellular automaton with a radius of 2.
+
+#### +ToatalisticRule(ruleNum: int)
+Constructor for creating an instance of totalistic rule.
+
+#### +getNumSubrules(): int 
+Return the length of the rule table.
+- [ ] is implemented?
+
+#### +getNeighborhood(cellIIdx: int, gen: Generation, bc: BoundaryConditions) : Cell[]
+Return an array containing the cell at ** cellIdx ** and its adjacent neighbors.
+- [ ] is implemented?
+
+#### +evolve(neighborhood: cell[]) : EvolvedCell[]
+Evolve the cell and its neighborhood cell.
+- [ ] is implemented?
+
+#### +toString(): String
+Return the string representation of the rule.
+- [ ] is implemented?
 
