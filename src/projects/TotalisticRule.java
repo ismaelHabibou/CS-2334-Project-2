@@ -1,13 +1,26 @@
 package projects;
 
 public class TotalisticRule extends Rule{
-    // TODO declare data fields
+     /** Data field: cell state for the rule*/
+    CellState[] states;
 
-    /** Create a totalistic rule*
+    /**
+     * Data field: maximum number of rules for an automaton
      */
-    //TODO Implement
-    public TotalisticRule(int ruleNum){
-        super(ruleNum);
+    private final static int MAXIMUM_NUMBER_OF_RULES = 64;
+
+    /** Create a totalistic rule
+     * @param ruleNum The rule number of the totalistic rule
+     * @throws InvalidRuleNumException Invalid rule number passed.
+     */
+    public TotalisticRule(int ruleNum) throws InvalidRuleNumException {
+        super((ruleNum < 0 || ruleNum > MAXIMUM_NUMBER_OF_RULES)? -1 : ruleNum);
+
+        String binaryRuleNum = Integer.toBinaryString(ruleNum);
+        states = new CellState[binaryRuleNum.length()];
+
+        for (int i = 0; i < binaryRuleNum.length(); i++)
+            states[i] = (binaryRuleNum.charAt(i) == '1')? CellState.ON : CellState.OFF;
     }
 
     /** Get the number of sub rules*/
