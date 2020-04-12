@@ -23,11 +23,11 @@ public class TotalisticRule extends Rule{
             states[i] = (binaryRuleNum.charAt(i) == '1')? CellState.ON : CellState.OFF;
     }
 
-    /** Get the number of sub rules*/
-    //TODO implement
+    /** Get the number of sub rules
+     * @return the total number of subrules*/
     @Override
     public int getNumSubrules() {
-        return 0;
+        return states.length;
     }
 
      /** Get neighborhood*/
