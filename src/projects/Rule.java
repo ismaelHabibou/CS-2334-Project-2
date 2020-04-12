@@ -34,16 +34,28 @@ public abstract class Rule {
         return new Generation(cells);
     }
 
-    /** Get the number of sub rule*/
+    /** Get the number of sub rule
+    * @return  the size of the rule table
+    */
     public abstract int getNumSubrules();
 
-    /** Get the neighborhood*/
+    /** Get the neighborhood of the cell at index cellIdx
+     * @param cellIdx The index of the cell
+     * @param gen Generation to be evolved
+     * @param bc Boundary conditions that governs the evolution of the generation
+     * @return the neighborhood of the cell at cellIdx           
+     * */
     public abstract Cell[] getNeighborhood(int cellIdx, Generation gen, BoundaryConditions bc);
 
-    /**evolve cells*/
+    /**evolve cells
+     * @param neighborhood  The neighborhood cells
+     * @return evolved cell with the following neighborhood
+     * */
     public abstract EvolvedCell evolve(Cell[] neighborhood);
 
-    /** Gte the string representation of the rule*/
+   /** Get the string representation of the rule
+     * @return String representation of the rule
+     * */
     @Override
     public abstract String toString();
 }
