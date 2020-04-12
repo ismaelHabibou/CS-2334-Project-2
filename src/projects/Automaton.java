@@ -41,10 +41,14 @@ public class Automaton {
         return rule;
     }
 
-    /** Get the generation
+     /** Get the generation
      * @param stepNum The number times the automaton has evolved
+     * @throws InvalidStepNumException This exception is thrown when the step number is invalid.               
      * */
-    public Generation geGeneration(int stepNum){
+    public Generation geGeneration(int stepNum) throws InvalidStepNumException {
+        if (stepNum > getTotalSteps())
+            evolve(stepNum);
+        
         return generations.get(stepNum);
     }
 
@@ -55,15 +59,25 @@ public class Automaton {
         return bc;
     }
 
-    /** evolve the automaton*/
-    //TODO implement
-    public void evolve(){
-
+     /** evolve the automaton
+     * @throws InvalidStepNumException The step number is invalid.
+     * */
+    public void evolve(int stepNum) throws InvalidStepNumException {
+        if (stepNum < 0)
+            throw new InvalidStepNumException(stepNum);
+        
+        // Remove everything from the list of generations except the initial generation
+        for (int i = generations.size() - 1; i > 0; i++)
+            generations.remove(i);
+        
+        // Evolve the automaton stepNum times
+        for (int i = 0; i < stepNum; i++)
+            generations.add(rule.evolve(generations.get(generations.size() - 1),bc));
     }
-
     /** Get the total steps
      * @return the total number of steps
      * */
+
     public int getTotalSteps(){
         return generations.size() - 1;
     }
