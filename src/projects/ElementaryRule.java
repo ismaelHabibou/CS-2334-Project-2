@@ -50,11 +50,20 @@ public class ElementaryRule extends Rule{
         return states.length;
     }
 
-    /** Get neighborhood */
-    //TODO implement
+    /** Get the neighborhood of the cell at index cellIdx
+     * @param cellIdx The index of the cell
+     * @param gen Generation to be evolved
+     * @param bc Boundary conditions that governs the evolution of the generation
+     * @return the neighborhood of the cell at cellIdx
+     * */
     @Override
     public Cell[] getNeighborhood(int cellIdx, Generation gen, BoundaryConditions bc) {
-        return new Cell[0]; // return value
+        Cell[] neighbors = new Cell[3];
+        neighbors[1] = bc.getNeighbor(cellIdx,0,gen);
+        neighbors[0] = bc.getNeighbor(cellIdx, -1,gen);
+        neighbors[2] = bc.getNeighbor(cellIdx, 1,gen);
+        
+        return neighbors; // return the reference of neighbors.
     }
 
     /** Get the string representation of the rule*/
@@ -64,11 +73,17 @@ public class ElementaryRule extends Rule{
         return null;// return value
     }
 
-    /** Evolve*/
-    //TODO implement
-
+   /** Evolve
+     * @param neighborhood Evolve the cell with following neighbors
+     * @return evolved cell
+     * */
     @Override
     public EvolvedCell evolve(Cell[] neighborhood) {
-        return null; // return value
+        int subruleNumber = neighborhood[0].getState() == CellState.ON? 1 : 0;
+
+        for (int i = 0; i < neighborhood.length - 1; i++)
+            subruleNumber = subruleNumber * 2 + (neighborhood[i + 1].getState() == CellState.ON? 1 : 0);
+
+        return new EvolvedCell(states[subruleNumber],subruleNumber);
     }
 }
