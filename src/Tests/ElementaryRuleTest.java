@@ -51,33 +51,18 @@ class ElementaryRuleTest {
         assertEquals(ruleNumber,rule.getRuleNum());
     }
 
-     @ParameterizedTest
-    @MethodSource("arrayStream1")
-    void getNeighborhoodWithCircularBoundary(Object[][] myObject) {
-        int index = (Integer) myObject[0][0];
-        Cell[] cells = (Cell[]) myObject[1];
-
-        assertArrayEquals(cells, rule.getNeighborhood(index,generation,circular));
-
-    }
-
-    @ParameterizedTest
-    @MethodSource("arrayStream2")
-    void getNeighborhoodWithFixedBoundary(Object[][] myObject) {
-        int index = (Integer) myObject[0][0];
-        Cell[] cells = (Cell[]) myObject[1];
-
-        assertArrayEquals(cells, rule.getNeighborhood(index,generation,fixed));
-
-    }
-
    @Test
     void evolve(){
-        Cell[] cells = new Cell[15];
+        Cell[] cells = new Cell[generation.size()];
         for (int i = 0; i < cells.length; i++)
-            cells[i] = generation.getCell(i);
+            cells[i] = new Cell(CellState.OFF);
 
-        assertEquals(generation.toString(),rule.evolve(cells).toString());
+        cells[6] = new Cell(CellState.ON);
+        cells[7] = new Cell(CellState.ON);
+        cells[8] = new Cell(CellState.ON);
+        System.out.println(new Generation(cells).toString());
+
+        assertEquals(new Generation(cells).toString(),rule.evolve(generation,circular).toString());
     }
 
     @Test
@@ -92,51 +77,6 @@ class ElementaryRuleTest {
 
     }
 
-
-    @ParameterizedTest
-    @MethodSource("arrayStream")
-    void testEvolve(Object myStates) {
-        Cell[][] states = (Cell[][]) myStates;
-
-        assertSame(states[0][0], rule.evolve(states[1]));
-
-    }
-
-
-    static Stream<Arguments> arrayStream(){
-        return Stream.of(Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.OFF, 7)}, {new Cell(CellState.ON), new Cell(CellState.ON), new Cell(CellState.ON)}}),
-                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.OFF, 6)}, {new Cell(CellState.ON), new Cell(CellState.ON), new Cell(CellState.OFF)}}),
-                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.OFF, 5)}, {new Cell(CellState.ON), new Cell(CellState.OFF), new Cell(CellState.ON)}}),
-                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.ON, 4)}, {new Cell(CellState.ON), new Cell(CellState.OFF), new Cell(CellState.OFF)}}),
-                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.OFF, 3)}, {new Cell(CellState.OFF), new Cell(CellState.ON), new Cell(CellState.ON)}}),
-                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.ON, 2)}, {new Cell(CellState.OFF), new Cell(CellState.ON), new Cell(CellState.OFF)}}),
-                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.ON, 1)}, {new Cell(CellState.OFF), new Cell(CellState.OFF), new Cell(CellState.ON)}}),
-                Arguments.arguments((Object) new Object[][]{{new EvolvedCell(CellState.OFF, 0)}, {new Cell(CellState.OFF), new Cell(CellState.OFF), new Cell(CellState.OFF)}})
-        );
-    }
-
- /** Parametrize test for circular boundary condition*/
-     static Stream<Arguments> arrayStream1(){
-
-        return Stream.of(Arguments.arguments( new Object[][]{{0}, {circular.getNeighbor(0,-1 , generation),
-                        circular.getNeighbor(0,0,generation),circular.getNeighbor(0,1,generation)}}),
-                Arguments.arguments( new Object[][]{ {generation.size() - 1}, {circular.getNeighbor(generation.size() - 1,-1 , generation),
-                        circular.getNeighbor(generation.size() - 1,0,generation),circular.getNeighbor(generation.size() - 1,1,generation)}}),
-                Arguments.arguments( new Object[][]{{3}, {circular.getNeighbor(3,-1 , generation),circular.getNeighbor(3,0,generation),
-                        circular.getNeighbor(3,1,generation)}})
-        );
-
-    }
-
-    /** Parametrize test for fixed boundary conditions*/
-    static Stream<Arguments> arrayStream2(){
-        return Stream.of(Arguments.arguments(new Object[][]{{0}, {fixed.getNeighbor(0, -1, generation),
-                        fixed.getNeighbor(0, 0, generation),fixed.getNeighbor(0, 1, generation)}}),
-                Arguments.arguments(new Object[][]{{generation.size() -1}, {fixed.getNeighbor(generation.size() - 1,-1,generation),
-                        fixed.getNeighbor(generation.size() - 1,0,generation),fixed.getNeighbor(generation.size() - 1,1,generation)}}),
-                Arguments.arguments(new Object[][]{{3}, {fixed.getNeighbor(3,-1,generation),fixed.getNeighbor(3,0,generation),
-                        fixed.getNeighbor(3, 1, generation)}}));
-    }
 
  /** Convert rule to String*/
     private static String ruleToString(int ruleNumber){
