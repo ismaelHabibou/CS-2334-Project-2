@@ -144,7 +144,9 @@ class ElementaryRuleTest {
         String ruleNumString = addLeadingZero(Integer.toBinaryString(ruleNumber));
 
         for (int i = 0; i < ruleNumString.length(); i++)
-            buffer.append(" ").append(ruleNumString.charAt(i) == '1'? CellState.ON.toString() : CellState.OFF.toString()).append(" ");
+            buffer.append(" ").append(ruleNumString.charAt(i) == '1'? CellState.ON.toString() : CellState.OFF.toString()).append("  ");
+
+        buffer.deleteCharAt(buffer.length() - 1);
 
         return buffer.toString();
     }
