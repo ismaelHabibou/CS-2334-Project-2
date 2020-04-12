@@ -49,11 +49,19 @@ public class TotalisticRule extends Rule{
         return neighborhood;
     }
 
-    /** Evolve cell*/
-    //TODO implement
+    /** Evolve cell with the following neighborhood
+     * @param neighborhood neighborhood of the cell at index 2 in the array.
+     * @return evolved cell
+     * */
     @Override
     public EvolvedCell evolve(Cell[] neighborhood) {
-        return null; // value
+        int numberOfOn = 0;
+        
+        for (int i = 0; i < neighborhood.length; i++)
+            if (neighborhood[i].getState() == CellState.ON)
+                numberOfOn++;
+            
+        return new EvolvedCell(states[(getNumSubrules() - 1 - numberOfOn)],numberOfOn);
     }
 
     /** Get the string representation*/
