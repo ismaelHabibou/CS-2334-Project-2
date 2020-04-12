@@ -68,12 +68,13 @@ class AutomatonTest {
         int totalSteps = 10;
         automaton.evolve(totalSteps);
 
-        assertEquals(totalSteps -1,automaton.getTotalSteps());
+        assertEquals(totalSteps,automaton.getTotalSteps());
     }
 
     @Test
-    void testToString() {
+    void testToString() throws InvalidStepNumException {
         Generation evolvedGeneration = new Generation(" OO O O OO ");
+        automaton.evolve(1);
         
         assertEquals(evolvedGeneration.toString(),automaton.toString());
     }
@@ -81,7 +82,7 @@ class AutomatonTest {
     @Test
     void getHistory() throws InvalidStepNumException{
         Generation evolvedGeneration = new Generation(" OO O O OO ");
-        String history = evolvedGeneration.toString() + "\n" + gen2.toString();
+         String history = gen2.toString() + "\n" + evolvedGeneration.toString();
         
         automaton.evolve(1);
         
