@@ -16,11 +16,27 @@ public class TotalisticRule extends Rule{
     public TotalisticRule(int ruleNum) throws InvalidRuleNumException {
         super((ruleNum < 0 || ruleNum > MAXIMUM_NUMBER_OF_RULES)? -1 : ruleNum);
 
-        String binaryRuleNum = Integer.toBinaryString(ruleNum);
+        String binaryRuleNum =  addLeadingZeros(Integer.toBinaryString(ruleNum));
         states = new CellState[binaryRuleNum.length()];
 
         for (int i = 0; i < binaryRuleNum.length(); i++)
             states[i] = (binaryRuleNum.charAt(i) == '1')? CellState.ON : CellState.OFF;
+    }
+
+     /** Add leading zeros
+     * @param binaryRuleNum The binary representation of the rule number.
+     * @return binary rule number with 6 bits
+     * */
+    private String  addLeadingZeros(String binaryRuleNum){
+         final int MAX = 6;
+         StringBuilder buffer = new StringBuilder();
+
+         for (int i = 0; i < MAX - binaryRuleNum.length(); i++)
+             buffer.append('0');
+
+         buffer.append(binaryRuleNum);
+
+         return buffer.toString();
     }
 
     /** Get the number of sub rules
