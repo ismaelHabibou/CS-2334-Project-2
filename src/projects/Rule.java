@@ -18,10 +18,20 @@ public abstract class Rule {
         return ruleNum;
     }
 
-    /** evolve the generation*/
-    //TODO implement the method
+     /** evolve the generation
+     * @param gen  The generation to be evolved
+     * @param bc The boundary conditions that is used for the evolution
+     * @return evolved generation          
+     * */
     public Generation evolve(Generation gen, BoundaryConditions bc){
-        return null; // any value
+         // Create an array of cell states
+        EvolvedCell[] cells = new EvolvedCell[gen.size()];
+        
+        // Evolved cells
+        for (int i = 0; i < gen.size(); i ++)
+            cells[i] = evolve(getNeighborhood(i,gen,bc)); // evolve the cell at i;
+        
+        return new Generation(cells);
     }
 
     /** Get the number of sub rule*/
