@@ -5,15 +5,10 @@ public abstract class Rule {
     /** Data field: rule number*/
      private int ruleNum;
 
-  /**
-     * Data field: maximum number of rules for an automaton
-     */
-    private final static int MAXIMUM_NUMBER_OF_RULES = 256;
-
     /**Implement the constructor that will be used by subclasses
      * @param ruleNum  The rule number.*/
     protected Rule(int ruleNum){
-   if (ruleNum > MAXIMUM_NUMBER_OF_RULES || ruleNum < MAXIMUM_NUMBER_OF_RULES)
+   if (ruleNum < 0)
             throw new InvalidRuleNumException(ruleNum);
        this.ruleNum = ruleNum;
     }
