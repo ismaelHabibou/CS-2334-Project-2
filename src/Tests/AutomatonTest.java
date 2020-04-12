@@ -70,6 +70,9 @@ class AutomatonTest {
 
     @Test
     void testToString() {
+        Generation evolvedGeneration = new Generation(" OO O O OO ");
+        
+        assertEquals(evolvedGeneration.toString(),automaton.toString());
     }
 
     @Test
