@@ -53,15 +53,18 @@ public class AutomatonMeasurements {
      * @return count of the occurrences of individual subrules
      * */
     public static int[] subruleCount(int stepNum, Automaton a) throws InvalidStepNumException {
-        Generation generation = a.geGeneration(stepNum); // generation at stepNum
         int[] count = new int[a.getRule().getNumSubrules()];
-        EvolvedCell temp; // temporary cell
-        
-        for (int i = 0; i < generation.size(); i++){
-            temp = (EvolvedCell) generation.getCell(i);
-            count[temp.getSubruleNum()]++; // increment the count of the subrule
+
+        if (stepNum > 0) {
+            Generation generation = a.geGeneration(stepNum); // generation at stepNum
+            EvolvedCell temp; // temporary cell
+
+            for (int i = 0; i < generation.size(); i++) {
+                temp = (EvolvedCell) generation.getCell(i);
+                count[temp.getSubruleNum()]++; // increment the count of the subrule
+            }
         }
-            
+
         return count; // return count
     }
 
