@@ -35,11 +35,11 @@ class AutomatonMeasurementsTest {
     }
 
     @Test
-    void testHammingDistance1() throws InvalidStepNumException{
+    void testHammingDistances() throws InvalidStepNumException{
          // Evolve automaton 10 steps
         automaton.evolve(10);
 
-        assertTrue(areArraysEqual(computeHammingDistance(automaton),AutomatonMeasurements.hammingDistance(automaton)));
+        assertTrue(areArraysEqual(computeHammingDistance(automaton),AutomatonMeasurements.hammingDistances(automaton)));
     }
 
     @Test

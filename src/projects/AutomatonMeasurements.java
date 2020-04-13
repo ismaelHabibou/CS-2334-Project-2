@@ -40,7 +40,7 @@ public class AutomatonMeasurements {
      * @throws InvalidStepNumException The step number is invalid.         
      * @return an array of integers that contains the hamming distance between successive steps
      * */
-    public static int[] hammingDistance(Automaton a) throws InvalidStepNumException {
+    public static int[] hammingDistances(Automaton a) throws InvalidStepNumException {
         int[] distances = new int[a.getTotalSteps()];
         
         for (int i = 1; i <= a.getTotalSteps(); i++)
