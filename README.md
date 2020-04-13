@@ -191,3 +191,25 @@ Evolve the cell and its neighborhood cell.
 Return the string representation of the rule.
 - [x] is implemented?
 
+---
+### AutomatonMeasurements
+This class is used to calculate some characteristics about the evolution of the automaton.
+#### <ins>+hammingDistance(g1 : Generation, g2 : Generation): int</ins>
+This method returns the hamming distance between two generations and throws an **IllegalArgumentException** if the two generations have different sizes.
+- [ ] is implemented?
+
+#### <ins>+hammingDistance(stepNum: int, a : Automaton): int</ins>
+Calculate the hamming distance for generations at **stepNum** and **stepNum - 1**
+- [ ] is implemented?
+
+#### <ins>+hammingDistanceAutomaton(a : Automaton): int[] </ins>
+Calculate the hamming distance between two successive generations and store the distances in an array.
+- [ ] is implemented?
+
+#### <ins>+subruleCount(stepNum: int, a: Automaton): int[]</ins>
+Count the number of times each subrule has been applied during the evolution step and returns an array that represents the counts of subrules.
+- [ ] is implemented?
+
+#### <ins>+subruleCounts(a: Automaton) : int[][]</ins>
+Returns the subrule count for every evolution step. The length of the array represents the number of evolution steps.
+- [ ] is implemented?
