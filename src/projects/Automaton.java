@@ -26,7 +26,11 @@ public class Automaton {
     /** Data field: background conditions*/
     private BoundaryConditions bc;
 
-    /** Create an automaton*/
+   /** Create an automaton
+     * @param rule The rule that governs the evolution of the automaton
+     * @param intit The inititial generation
+     * @param bc The boundary conditions
+     * */
     public Automaton(Rule rule, Generation intit, BoundaryConditions bc) {
         this.rule = rule;
         this.bc = bc;
@@ -43,7 +47,8 @@ public class Automaton {
 
      /** Get the generation
      * @param stepNum The number times the automaton has evolved
-     * @throws InvalidStepNumException This exception is thrown when the step number is invalid.               
+     * @throws InvalidStepNumException This exception is thrown when the step number is invalid.  
+     * @return the generation which has a step number stepNum             
      * */
     public Generation geGeneration(int stepNum) throws InvalidStepNumException {
         if (stepNum > getTotalSteps())
@@ -61,6 +66,7 @@ public class Automaton {
 
      /** evolve the automaton
      * @throws InvalidStepNumException The step number is invalid.
+     * @param stepNum The step Number
      * */
     public void evolve(int stepNum) throws InvalidStepNumException {
         if (stepNum < 0)
@@ -90,7 +96,9 @@ public class Automaton {
         return generations.get(generations.size() - 1).toString();
     }
 
-    /** Get the automaton history*/
+    /** Get the automaton history
+    * @return string representation of all the different steps
+     * */
     public String getHistory(){
         StringBuilder buffer = new StringBuilder(); // store the string state representation of all the generations
 
