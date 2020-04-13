@@ -50,11 +50,11 @@ public class Automaton {
      * @throws InvalidStepNumException This exception is thrown when the step number is invalid.  
      * @return the generation which has a step number stepNum             
      * */
-    public Generation geGeneration(int stepNum) throws InvalidStepNumException {
+    public Generation getGeneration(int stepNum) throws InvalidStepNumException {
         if (stepNum < 0)
             throw new InvalidStepNumException(stepNum);
-        if (stepNum > getTotalSteps())
-            evolve(stepNum);
+       
+         evolve(stepNum);
 
         return generations.get(stepNum);
     }
@@ -62,7 +62,7 @@ public class Automaton {
     /** Get the boundary conditions
      * @return the boundary condition
      * */
-    public BoundaryConditions getBc() {
+    public BoundaryConditions getBoundaryConditions() {
         return bc;
     }
 
@@ -75,7 +75,7 @@ public class Automaton {
             throw new InvalidStepNumException(stepNum);
         
         // Remove everything from the list of generations except the initial generation
-        for (int i = generations.size() - 1; i > 0; i++)
+        for (int i = generations.size() - 1; i > 0; i--)
             generations.remove(i);
         
         // Evolve the automaton stepNum times
