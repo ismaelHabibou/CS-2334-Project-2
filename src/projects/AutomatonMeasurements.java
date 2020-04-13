@@ -22,9 +22,17 @@ public class AutomatonMeasurements {
         return distance; //return the distance
     }
 
-    //TODO implement
-    public static int hammingDistance(int stepNum, Automaton a){
-        return 0;// return a value
+    /** Get the hamming distance between two successive generations
+     * @param stepNum The step number
+     * @param a The automaton
+     * @return the hamming distance between the generations at stepNum and stepNum-1
+     * @throws InvalidStepNumException The step number is invalid.
+     * */
+    public static int hammingDistance(int stepNum, Automaton a) throws InvalidStepNumException {
+        if (a == null)
+            throw new NullPointerException();
+        
+        return hammingDistance(a.geGeneration(stepNum),a.geGeneration(stepNum - 1));
     }
 
     //TODO implement
