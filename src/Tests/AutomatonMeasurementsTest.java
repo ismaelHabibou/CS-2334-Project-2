@@ -35,7 +35,11 @@ class AutomatonMeasurementsTest {
     }
 
     @Test
-    void testHammingDistance1() {
+    void testHammingDistance1() throws InvalidStepNumException{
+        // Evolve automaton 10 steps
+        automaton.evolve(10);
+
+        assertEquals(computeHammingDistance(automaton),AutomatonMeasurements.hammingDistance(automaton));
     }
 
     @Test
@@ -65,5 +69,14 @@ class AutomatonMeasurementsTest {
             distance = computeHammingDistance(a.geGeneration(stepNum),a.geGeneration(stepNum - 1));
 
         return distance;
+    }
+
+   private static int[] computeHammingDistance(Automaton automaton) throws InvalidStepNumException {
+        int[] distances = new int[automaton.getTotalSteps()];
+
+        for (int i = 1; i <= distances.length; i++)
+            distances[i] = computeHammingDistance(i,automaton);
+
+        return distances;
     }
 }
