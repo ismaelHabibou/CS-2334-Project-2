@@ -65,8 +65,17 @@ public class AutomatonMeasurements {
         return count; // return count
     }
 
-    //TODO implement
-    public static int[][] subruleCounts(Automaton a){
-        return new int[0][0]; // return any value
+    /** Get the occurrence of each subrules for the entire automaton
+     * @param a The automaton
+     * @return a two dimensional array for the count of subrules for each step in the automaton
+     * @throws InvalidStepNumException Invalid step number.
+     * */
+    public static int[][] subruleCounts(Automaton a) throws InvalidStepNumException {
+        int[][] count = new int[a.getTotalSteps()][a.getRule().getNumSubrules()];
+
+        for (int i = 1; i <= a.getTotalSteps(); i++)
+            count[i - 1] = subruleCount(i,a);
+
+        return count;
     }
 }
