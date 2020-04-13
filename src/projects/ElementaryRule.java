@@ -27,7 +27,7 @@ public class ElementaryRule extends Rule{
      * @throws InvalidRuleNumException invalid rule number.   
      * */
     public ElementaryRule(int ruleNum)throws InvalidRuleNumException{
-        super((ruleNum > MAXIMUM_NUMBER_OF_RULES || ruleNum < 0)? -1: ruleNum);
+       super((ruleNum >= MAXIMUM_NUMBER_OF_RULES || ruleNum < 0)? -1: ruleNum);
 
         // Binary representation of the rule number
         String binaryRuleNum = addLeadingZero(Integer.toBinaryString(ruleNum),NUMBER_OF_SUBRULES);
