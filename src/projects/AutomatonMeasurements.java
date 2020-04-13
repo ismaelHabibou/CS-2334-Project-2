@@ -45,7 +45,8 @@ public class AutomatonMeasurements {
         
         for (int i = 1; i <= a.getTotalSteps(); i++)
             distances[i - 1] = hammingDistance(i,a);
-        return new int[0]; // return any value
+
+        return distances;
     }
 
     /** Get the total count of subrule for the evolution of the generation with step number stepNum
