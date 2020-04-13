@@ -43,7 +43,10 @@ class AutomatonMeasurementsTest {
     }
 
     @Test
-    void subruleCount() {
+    void subruleCount() throws InvalidStepNumException{
+        int stepNum = 10;
+
+        assertEquals(getSubruleCounts(stepNum,automaton),AutomatonMeasurements.subruleCount(stepNum,automaton));
     }
 
     @Test
@@ -75,8 +78,23 @@ class AutomatonMeasurementsTest {
         int[] distances = new int[automaton.getTotalSteps()];
 
         for (int i = 1; i <= distances.length; i++)
-            distances[i] = computeHammingDistance(i,automaton);
+            distances[i - 1] = computeHammingDistance(i,automaton);
 
         return distances;
+    }
+
+  private static int[] getSubruleCounts(int stepNum, Automaton a) throws InvalidStepNumException {
+        int[] counts = new int[a.getRule().getNumSubrules()];
+
+        Generation generation = a.geGeneration(stepNum);
+
+        EvolvedCell cellAt;
+        for (int i = 0; i < generation.size(); i++){
+            cellAt = (EvolvedCell) generation.getCell(i);
+
+            counts[cellAt.getSubruleNum()]++;
+        }
+
+        return counts;
     }
 }
