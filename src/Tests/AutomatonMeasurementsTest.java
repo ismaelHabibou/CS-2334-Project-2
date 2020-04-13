@@ -27,7 +27,11 @@ class AutomatonMeasurementsTest {
     }
 
     @Test
-    void testHammingDistance() {
+    void testHammingDistance()throws InvalidStepNumException  {
+       int stepNum = 7;
+        assertEquals(computeHammingDistance(stepNum,automaton),
+                AutomatonMeasurements.hammingDistance(stepNum,automaton));
+
     }
 
     @Test
@@ -53,5 +57,13 @@ class AutomatonMeasurementsTest {
                 difference++;
 
     return difference;
+    }
+
+   private static int computeHammingDistance(int stepNum,Automaton a) throws InvalidStepNumException {
+        int distance = 0;
+        if (stepNum > 0)
+            distance = computeHammingDistance(a.geGeneration(stepNum),a.geGeneration(stepNum - 1));
+
+        return distance;
     }
 }
