@@ -14,7 +14,7 @@ public abstract class Rule {
     }
 
     /** Get the rule number
-     * @retunr rule number
+     * @return rule number
      * */
     public int getRuleNum() {
         return ruleNum;
@@ -63,6 +63,8 @@ public abstract class Rule {
 
     /** Add leading zero to the binary representation of the rule number
      * @return a binary rule number with numSubrules bits.
+     * @param binaryRule The binary representation of the rule number
+     * @param numSubrules The number of subrules   
      * */
     protected static String addLeadingZero(String binaryRule, int numSubrules){
         StringBuilder buffer = new StringBuilder();
