@@ -17,7 +17,7 @@ public class TotalisticRule extends Rule{
      * @throws InvalidRuleNumException Invalid rule number passed.
      */
     public TotalisticRule(int ruleNum) throws InvalidRuleNumException {
-        super((ruleNum < 0 || ruleNum > MAXIMUM_NUMBER_OF_RULES)? -1 : ruleNum);
+        super((ruleNum >= MAXIMUM_NUMBER_OF_RULES || ruleNum < 0)? -1: ruleNum);
 
         String binaryRuleNum =  addLeadingZero(Integer.toBinaryString(ruleNum),NUMBER_SUBRULES);
         states = new CellState[binaryRuleNum.length()];
