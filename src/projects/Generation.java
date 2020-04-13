@@ -8,7 +8,9 @@ public class Generation {
     private Cell[] cells;
 
     /** Create a generation from an array of CellStates
-     * @param states an array of CellState*/
+     * @param states an array of CellState
+     * @param states String representation of cells
+     */
     public Generation(CellState[] states){
         cells = new Cell[states.length];
 
@@ -40,7 +42,9 @@ public class Generation {
 
     }
 
-    /** fill the array of cells*/
+     /** fill the array of cells
+     * @param cells The array of the cells to be filled
+     * @param states String containing string representations of the cells.*/
     public static void fillCells(Cell[] cells, String states){
         CellState temp; // temporary variable;
 
@@ -60,6 +64,7 @@ public class Generation {
     }
 
     /** Get cell at a specific index
+     * @param idx The index of the cell to be returned
      * @return the cell at idx
      * */
     public Cell getCell(int idx){

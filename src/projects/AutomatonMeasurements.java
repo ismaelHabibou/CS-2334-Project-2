@@ -51,7 +51,9 @@ public class AutomatonMeasurements {
 
     /** Get the total count of subrule for the evolution of the generation with step number stepNum
      * @param stepNum The step number of the generation
+     * @param a The automaton          
      * @return count of the occurrences of individual subrules
+     * @throws InvalidStepNumException Invalid Step number
      * */
     public static int[] subruleCount(int stepNum, Automaton a) throws InvalidStepNumException {
         int[] count = new int[a.getRule().getNumSubrules()];
