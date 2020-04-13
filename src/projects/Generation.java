@@ -22,8 +22,13 @@ public class Generation {
     public Generation(Cell[] cells){
         this.cells = new Cell[cells.length];
 
-        for (int i = 0; i < cells.length; i++)
-            this.cells[i] = new Cell(cells[i].getState());
+        for (int i = 0; i < cells.length; i++){
+            if (cells[i] instanceof EvolvedCell)
+                this.cells[i] = new EvolvedCell(cells[i].getState(),((EvolvedCell)cells[i]).getSubruleNum());
+            else
+                this.cells[i] = new Cell(cells[i].getState());
+        }
+
     }
 
     /** Create a generation using a string*/
