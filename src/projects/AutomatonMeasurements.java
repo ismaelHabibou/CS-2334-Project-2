@@ -35,8 +35,16 @@ public class AutomatonMeasurements {
         return hammingDistance(a.geGeneration(stepNum),a.geGeneration(stepNum - 1));
     }
 
-    //TODO implement
-    public static int[] hammingDistance(Automaton a){
+    /** Get the hamming distance between two successive steps of the automaton
+     * @param a The automaton
+     * @throws InvalidStepNumException The step number is invalid.         
+     * @return an array of integers that contains the hamming distance between successive steps
+     * */
+    public static int[] hammingDistance(Automaton a) throws InvalidStepNumException {
+        int[] distances = new int[a.getTotalSteps()];
+        
+        for (int i = 1; i <= a.getTotalSteps(); i++)
+            distances[i - 1] = hammingDistance(i,a);
         return new int[0]; // return any value
     }
 
