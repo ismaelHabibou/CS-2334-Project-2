@@ -1,4 +1,4 @@
-# Project 2 (Elementary Cellular Automaton)
+# Project 2 (Automaton)
 >This project is an extension of the first project we did in CS2334. For more informations you can check the repostory of the first project. With that being said let's dive into coding, shall we? 
   
 ## Classes 
