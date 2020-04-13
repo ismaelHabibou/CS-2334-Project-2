@@ -36,22 +36,40 @@ class AutomatonMeasurementsTest {
 
     @Test
     void testHammingDistance1() throws InvalidStepNumException{
-        // Evolve automaton 10 steps
+         // Evolve automaton 10 steps
         automaton.evolve(10);
 
-        assertEquals(computeHammingDistance(automaton),AutomatonMeasurements.hammingDistance(automaton));
+        assertTrue(areArraysEqual(computeHammingDistance(automaton),AutomatonMeasurements.hammingDistance(automaton)));
     }
 
     @Test
     void subruleCount() throws InvalidStepNumException{
         int stepNum = 10;
 
-        assertEquals(getSubruleCounts(stepNum,automaton),AutomatonMeasurements.subruleCount(stepNum,automaton));
+        assertTrue(areArraysEqual(getSubruleCounts(stepNum,automaton),AutomatonMeasurements.subruleCount(stepNum,automaton)));
     }
 
     @Test
     void subruleCounts() throws InvalidStepNumException {
-     assertEquals(getSubruleCounts(automaton),AutomatonMeasurements.subruleCounts(automaton));
+     boolean correct = true;
+        int[][] expected = getSubruleCounts(automaton);
+        int[][] actual = AutomatonMeasurements.subruleCounts(automaton);
+
+        for (int i = 0; i < expected.length; i++)
+            if (!areArraysEqual(expected[i],actual[i]))
+                correct = false;
+
+        assertTrue(correct);
+    }
+    
+     private boolean areArraysEqual(int[] expected, int[] actual){
+        boolean correct = true;
+
+        for (int i = 0; i < actual.length; i++)
+            if (actual[i] != expected[i])
+                correct = false;
+
+        return correct;
     }
 
     private static int computeHammingDistance(Generation generation1, Generation generation2){
@@ -61,7 +79,7 @@ class AutomatonMeasurementsTest {
         int difference = 0;
 
         for (int i = 0; i < generation1.size(); i++)
-            if (generation1.getCell(i) == generation2.getCell(i))
+            if (generation1.getCell(i).getState() != generation2.getCell(i).getState())
                 difference++;
 
     return difference;
