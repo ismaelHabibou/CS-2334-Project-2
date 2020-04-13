@@ -17,6 +17,13 @@ class AutomatonMeasurementsTest {
 
     @Test
     void hammingDistance() {
+@Test
+    void hammingDistance() {
+        Generation generation = new Generation("      OOO      ");
+
+        assertEquals(computeHammingDistance(generation,firstGenerations),
+                AutomatonMeasurements.hammingDistance(generation,firstGenerations));
+    }
     }
 
     @Test
@@ -33,5 +40,18 @@ class AutomatonMeasurementsTest {
 
     @Test
     void subruleCounts() {
+    }
+
+    private static int computeHammingDistance(Generation generation1, Generation generation2){
+        if (generation1.size() != generation2.size())
+            throw new IllegalArgumentException("Generations have different sizes.");
+
+        int difference = 0;
+
+        for (int i = 0; i < generation1.size(); i++)
+            if (generation1.getCell(i) == generation2.getCell(i))
+                difference++;
+
+    return difference;
     }
 }
