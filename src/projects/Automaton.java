@@ -53,8 +53,9 @@ public class Automaton {
     public Generation getGeneration(int stepNum) throws InvalidStepNumException {
         if (stepNum < 0)
             throw new InvalidStepNumException(stepNum);
-       
-         evolve(stepNum);
+
+        else if (stepNum > getTotalSteps())
+            evolve(stepNum);
 
         return generations.get(stepNum);
     }
