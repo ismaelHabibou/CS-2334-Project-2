@@ -38,14 +38,14 @@ class AutomatonTest {
     }
 
     @Test
-    void geGeneration() throws InvalidStepNumExceptio {
+    void getGeneration() throws InvalidStepNumExceptio {
         Generation evolvedGeneration = new Generation(" OO O O OO ");
 
-        assertEquals(evolvedGeneration.toString(),automaton.geGeneration(1).toString());
+        assertEquals(evolvedGeneration.toString(),automaton.getGeneration(1).toString());
     }
 
     @Test
-    void getBc() {
+    void getBoundaryConditions() {
       assertEquals(conditions,automaton.getBc());
     }
 
