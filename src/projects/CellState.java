@@ -22,7 +22,9 @@ public enum CellState {
         SYMBOL_TO_STATE.put(OFF.symbol,OFF);
     }
 
-    /** Create an enum type*/
+   /** Create an enum type
+     * @param symbol  The symbol of the state
+     * */
     CellState(char symbol){
         this.symbol = symbol;
     }
