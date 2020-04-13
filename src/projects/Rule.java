@@ -6,7 +6,9 @@ public abstract class Rule {
      private int ruleNum;
 
     /**Implement the constructor that will be used by subclasses
-     * @param ruleNum  The rule number.*/
+     * @param ruleNum  The rule number.
+     * @throws InvalidStepNumException Invalid step number
+     * */
     protected Rule(int ruleNum){
    if (ruleNum < 0)
             throw new InvalidRuleNumException(ruleNum);
